@@ -1,22 +1,36 @@
 package Aircraft;
+import Tower.WeatherTower;
 import utils.Coordinates;
 
 public class AircraftFactory {
-    private static long idCounter = 0;
+    private long idCounter;
+    private WeatherTower tower;
 
-    private static long nextId() {
+    private long nextId() {
         return idCounter++;
     }
-    public static Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates) {
+
+    public AircraftFactory(WeatherTower p_tower) {
+        tower = p_tower;
+        idCounter = 0;
+    }
+    
+    public Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates) {
+        Aircraft aircraft;
         switch (p_type) {
             case "Helicopter":
-                return new Helicopter(nextId(), p_name, p_coordinates);
+                aircraft = new Helicopter(nextId(), p_name, p_coordinates);
+                break;
             case "Baloon":
-                return new Baloon(nextId(), p_name, p_coordinates);
+                aircraft = new Baloon(nextId(), p_name, p_coordinates);
+                break;
             case "JetPlane":
-                return new JetPlane(nextId(), p_name, p_coordinates);
+                aircraft = new JetPlane(nextId(), p_name, p_coordinates);
+                break;
             default:
                 throw new IllegalArgumentException("Unknown aircraft type: " + p_type);
         }
+        aircraft.registerTower(tower);
+        return aircraft;
     }
 }

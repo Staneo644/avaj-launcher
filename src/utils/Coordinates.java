@@ -27,4 +27,9 @@ public class Coordinates {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "{" + orthogonalCoordinates.height + "-" + orthogonalCoordinates.latitude + "-" + orthogonalCoordinates.longitude + "}";
+    }
 }

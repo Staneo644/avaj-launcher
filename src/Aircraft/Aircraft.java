@@ -19,6 +19,11 @@ public class Aircraft extends Flyable {
         this.coordinates = coordinates;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
     public void updateConditions() {
         Weather weather = weatherTower.getWeather(coordinates);
         OrthogonalCoordinates reaction = reactions.get(weather);
@@ -33,13 +38,10 @@ public class Aircraft extends Flyable {
         } else {
             System.out.println(this + ": No reaction for weather " + weather);
         }
-
     }
 
     public void registerTower(WeatherTower weatherTower) {
         this.weatherTower = weatherTower;
         weatherTower.register(this);
     }
-
-
 }

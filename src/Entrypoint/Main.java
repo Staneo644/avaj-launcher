@@ -1,10 +1,14 @@
 package Entrypoint;
 import java.util.List;
 import Aircraft.AircraftFactory;
+import Tower.WeatherTower;
 import utils.Coordinates;
+import utils.Weather;
 
 public class Main {
     public static void main(String[] args) {
+        WeatherTower weatherTower = new WeatherTower();
+        AircraftFactory aircraftFactory = new AircraftFactory(weatherTower);
         List<String> lines = Parsing.parse(args);
 
         if (lines == null || lines.size() <= 1) {
@@ -36,10 +40,11 @@ public class Main {
             int latitude = Integer.parseInt(parts[3]);
             int height = Integer.parseInt(parts[4]);
 
-            AircraftFactory.newAircraft(type, name, new Coordinates(longitude, latitude, height));
+            aircraftFactory.newAircraft(type, name, new Coordinates(longitude, latitude, height));
 
         }
-
-
+        for (int i = 0; i < simulationDuration; i++) {
+            weatherTower.changeWeather();
+        }
     }
 }

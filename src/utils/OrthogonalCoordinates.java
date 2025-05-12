@@ -10,4 +10,6 @@ public class OrthogonalCoordinates {
         this.latitude = latitude;
         this.height = height;
     }   
+
+    
 }
