@@ -3,7 +3,6 @@ import java.util.List;
 import Aircraft.AircraftFactory;
 import Tower.WeatherTower;
 import utils.Coordinates;
-import utils.Weather;
 
 public class Main {
     public static void main(String[] args) {
@@ -39,6 +38,8 @@ public class Main {
             int longitude = Integer.parseInt(parts[2]);
             int latitude = Integer.parseInt(parts[3]);
             int height = Integer.parseInt(parts[4]);
+
+            System.out.println("Creating aircraft: " + type + " " + name + " " + longitude + " " + latitude + " " + height);
 
             aircraftFactory.newAircraft(type, name, new Coordinates(longitude, latitude, height));
 

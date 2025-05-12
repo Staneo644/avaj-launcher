@@ -4,6 +4,7 @@ public class Coordinates {
 
     public Coordinates(int p_longitude, int p_latitude, int p_height) {
         this.orthogonalCoordinates = new OrthogonalCoordinates(p_longitude, p_latitude, Math.max(1, p_height));
+        System.out.println("Coordinates constructor called with: " + orthogonalCoordinates);
     }
 
     public int getLongitude() {
@@ -19,9 +20,16 @@ public class Coordinates {
     }
 
     public Boolean setCoordinate(int longitude, int latitude, int height) {
-        orthogonalCoordinates.longitude = Math.max(0, longitude);
-        orthogonalCoordinates.latitude = Math.max(0, latitude);
-        orthogonalCoordinates.height = Math.min(height, 100);
+        orthogonalCoordinates.longitude += longitude;
+        orthogonalCoordinates.latitude += latitude;
+        orthogonalCoordinates.height += height;
+        if (orthogonalCoordinates.longitude < 0) {
+            orthogonalCoordinates.longitude = 0;
+        }
+        if (orthogonalCoordinates.latitude < 0) {
+            orthogonalCoordinates.latitude = 0;
+        }
+        orthogonalCoordinates.height = Math.min(orthogonalCoordinates.height, 100);
         if (orthogonalCoordinates.height <= 0) {
             return false;
         }
@@ -30,6 +38,6 @@ public class Coordinates {
 
     @Override
     public String toString() {
-        return "{" + orthogonalCoordinates.height + "-" + orthogonalCoordinates.latitude + "-" + orthogonalCoordinates.longitude + "}";
+        return orthogonalCoordinates.toString();
     }
 }

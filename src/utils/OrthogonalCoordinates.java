@@ -1,9 +1,9 @@
 package utils;
 
 public class OrthogonalCoordinates {
-    public int height;
-    public int latitude;
     public int longitude;
+    public int latitude;
+    public int height;
 
     public OrthogonalCoordinates(int longitude, int latitude, int height) {
         this.longitude = longitude;
@@ -11,5 +11,9 @@ public class OrthogonalCoordinates {
         this.height = height;
     }   
 
-    
+    @Override
+    public String toString() {
+        return "{" + longitude + ", " + latitude + ", " + height + "}";
+    }
+
 }
