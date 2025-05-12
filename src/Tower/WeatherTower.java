@@ -1,14 +1,14 @@
 package Tower;
 import utils.Coordinates;
+import utils.Weather;
 
 public class WeatherTower extends Tower {
     public void changeWeather() {
         // Logic to change the weather
     }
 
-    public String getWeather(Coordinates coordinates) {
-        // Logic to get the weather based on coordinates
-        return "Sunny"; // Placeholder return value
+    public Weather getWeather(Coordinates coordinates) {
+        return Weather.SUN;
     }
     
 }

@@ -1,32 +1,30 @@
 package utils;
 public class Coordinates {
-    private int longitude;
-    private int latitude;
-    private int height;
+    OrthogonalCoordinates orthogonalCoordinates;
 
     public Coordinates(int p_longitude, int p_latitude, int p_height) {
-        this.longitude = p_longitude;
-        this.latitude = p_latitude;
-        this.height = Math.max(0, p_height);
+        this.orthogonalCoordinates = new OrthogonalCoordinates(p_longitude, p_latitude, Math.max(1, p_height));
     }
 
     public int getLongitude() {
-        return longitude;
+        return orthogonalCoordinates.longitude;
     }
 
     public int getLatitude() {
-        return latitude;
+        return orthogonalCoordinates.latitude;
     }
 
     public int getHeight() {
-        return height;
+        return orthogonalCoordinates.height;
     }
 
-    public Boolean setHeight(int height) {
-        if (height < 0) {
+    public Boolean setCoordinate(int longitude, int latitude, int height) {
+        orthogonalCoordinates.longitude = Math.max(0, longitude);
+        orthogonalCoordinates.latitude = Math.max(0, latitude);
+        orthogonalCoordinates.height = Math.min(height, 100);
+        if (orthogonalCoordinates.height <= 0) {
             return false;
         }
-        this.height = Math.min(height, 100);
         return true;
     }
 }
