@@ -13,4 +13,8 @@ public class Baloon extends Aircraft {
         this.reactions.put(Weather.FOG, new OrthogonalCoordinates(0, 0, -3));
         this.reactions.put(Weather.SNOW, new OrthogonalCoordinates(0, 0, -15));
     }
+
+    public void updateConditions() {
+        updateConditionsParent();
+    }    
 }

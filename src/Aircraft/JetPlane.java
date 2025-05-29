@@ -12,4 +12,8 @@ public class JetPlane extends Aircraft {
         this.reactions.put(Weather.FOG, new OrthogonalCoordinates(0, 1, 0));
         this.reactions.put(Weather.SNOW, new OrthogonalCoordinates(0, 0, -7));
     }    
+
+    public void updateConditions() {
+        updateConditionsParent();
+    }
 }
