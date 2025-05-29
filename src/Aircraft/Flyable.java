@@ -1,9 +1,9 @@
 package Aircraft;
 import Tower.WeatherTower;
 
-public abstract class Flyable {
-    WeatherTower weatherTower;
+public interface Flyable {
+    static final WeatherTower weatherTower = new WeatherTower();
 
     public abstract void updateConditions();
-    abstract void registerTower(WeatherTower weatherTower);
+    public abstract void registerTower(WeatherTower weatherTower);
 }

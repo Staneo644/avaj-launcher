@@ -12,15 +12,10 @@ public class Parsing {
             return null;
         }
 
-        // String filename = args[0];
-
-         String filePath = args[0];
+        String filePath = args[0];
 
         try {
             List<String> lines = Files.readAllLines(Paths.get(filePath));
-            for (String line : lines) {
-                System.out.println(line);
-            }
             return lines;
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());

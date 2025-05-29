@@ -1,36 +1,39 @@
 package utils;
 public class Coordinates {
-    OrthogonalCoordinates orthogonalCoordinates;
+    int longitude;
+    int latitude;
+    int height;
 
     public Coordinates(int p_longitude, int p_latitude, int p_height) {
-        this.orthogonalCoordinates = new OrthogonalCoordinates(p_longitude, p_latitude, Math.max(1, p_height));
-        System.out.println("Coordinates constructor called with: " + orthogonalCoordinates);
+        this.longitude = p_longitude;
+        this.latitude = p_latitude;
+        this.height = Math.max(1, p_height);
     }
 
     public int getLongitude() {
-        return orthogonalCoordinates.longitude;
+        return longitude;
     }
 
     public int getLatitude() {
-        return orthogonalCoordinates.latitude;
+        return latitude;
     }
 
     public int getHeight() {
-        return orthogonalCoordinates.height;
+        return height;
     }
 
-    public Boolean setCoordinate(int longitude, int latitude, int height) {
-        orthogonalCoordinates.longitude += longitude;
-        orthogonalCoordinates.latitude += latitude;
-        orthogonalCoordinates.height += height;
-        if (orthogonalCoordinates.longitude < 0) {
-            orthogonalCoordinates.longitude = 0;
+    public Boolean setCoordinate(OrthogonalCoordinates orthogonalCoordinates) {
+        this.longitude += orthogonalCoordinates.longitude;
+        this.latitude += orthogonalCoordinates.latitude;
+        this.height += orthogonalCoordinates.height;
+        if (this.longitude < 0) {
+            this.longitude = 0;
         }
-        if (orthogonalCoordinates.latitude < 0) {
-            orthogonalCoordinates.latitude = 0;
+        if (this.latitude < 0) {
+            this.latitude = 0;
         }
-        orthogonalCoordinates.height = Math.min(orthogonalCoordinates.height, 100);
-        if (orthogonalCoordinates.height <= 0) {
+        this.height = Math.min(this.height, 100);
+        if (this.height <= 0) {
             return false;
         }
         return true;
@@ -38,6 +41,7 @@ public class Coordinates {
 
     @Override
     public String toString() {
-        return orthogonalCoordinates.toString();
+        OrthogonalCoordinates printable = new OrthogonalCoordinates(this.longitude, this.latitude, this.height);
+        return printable.toString();
     }
 }

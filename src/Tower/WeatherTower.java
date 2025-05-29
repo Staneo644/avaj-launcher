@@ -6,10 +6,7 @@ import utils.WeatherProvider;
 
 public class WeatherTower extends Tower {
     public void changeWeather() {
-        for (int i = 0; i < observers.size(); i++) {
-            Flyable flyable = observers.get(i);
-            flyable.updateConditions();
-        }
+        conditionsChanged();
     }
 
     public Weather getWeather(Coordinates coordinates) {

@@ -15,8 +15,4 @@ public enum Weather {
     public String getDescription() {
         return description;
     }
-    
-    public static Weather getWeather() {
-        return values()[(int) (Math.random() * values().length)];
-    }
 }
